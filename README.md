@@ -58,3 +58,6 @@ static/
 manage.py
 requirements.txt
 README.md
+
+## Author
+## By Sneha Dasgupta
