@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | CRM Connect{% endblock %}
+{% block content %}
+<section class="dashboard-welcome">
+    <div class="welcome-copy">
+        <p class="eyebrow">CRM MANAGEMENT WORKSPACE</p>
+        <h1>Manage relationships with a clear, organized workflow.</h1>
+        <p>Welcome to the CRM dashboard. This page is your starting point for understanding how the application is organized and what you can do with each part of the system.</p>
+        <div class="welcome-tags">
+            <span>Customer records</span><span>Relationship management</span><span>Simple workflow</span>
+        </div>
+    </div>
+    <div class="dashboard-orbit">
+        <div class="orbit-center">CRM</div>
+        <div class="orbit-card orbit-one"><b>01</b><span>Store</span></div>
+        <div class="orbit-card orbit-two"><b>02</b><span>Manage</span></div>
+        <div class="orbit-card orbit-three"><b>03</b><span>Review</span></div>
+    </div>
+</section>
+
+<section class="dashboard-section-heading">
+    <p class="eyebrow">SYSTEM MODULES</p>
+    <h2>Know where to go</h2>
+    <p>Each navigation page has a separate purpose, so you can move directly to the task you need.</p>
+</section>
+
+<section class="module-grid">
+    <article class="module-card module-blue">
+        <span class="module-number">01</span><div class="module-symbol">◉</div>
+        <h3>Customers</h3>
+        <p>Browse the complete customer directory, search records, filter by status and open individual customer profiles.</p>
+        <div class="module-list"><span>Search & filter</span><span>View details</span><span>Edit or delete</span></div>
+    </article>
+    <article class="module-card module-green">
+        <span class="module-number">02</span><div class="module-symbol">＋</div>
+        <h3>Add Customer</h3>
+        <p>Create a new customer profile with contact details, company information, location, relationship status and notes.</p>
+        <div class="module-list"><span>Contact details</span><span>Company information</span><span>Relationship status</span></div>
+    </article>
+    <article class="module-card module-orange">
+        <span class="module-number">03</span><div class="module-symbol">▥</div>
+        <h3>Reports</h3>
+        <p>Use the reporting area when you need database-based summaries, relationship distribution and location insights.</p>
+        <div class="module-list"><span>Status analysis</span><span>City distribution</span><span>Database insights</span></div>
+    </article>
+    <article class="module-card module-purple">
+        <span class="module-number">04</span><div class="module-symbol">⚙</div>
+        <h3>Admin Panel</h3>
+        <p>Use Django Admin for backend record management, filters, searching and administrative control over the CRM database.</p>
+        <div class="module-list"><span>Manage records</span><span>Search data</span><span>Admin controls</span></div>
+    </article>
+</section>
+
+<section class="dashboard-process panel">
+    <div class="process-heading">
+        <div><p class="eyebrow">CRM LIFECYCLE</p><h2>From a new contact to a maintained customer record</h2></div>
+        <p>A simple sequence keeps information consistent and makes the application easy to use.</p>
+    </div>
+    <div class="lifecycle">
+        <div><span>01</span><h3>Create</h3><p>Add the customer's basic contact and business information.</p></div>
+        <div><span>02</span><h3>Organize</h3><p>Set the appropriate relationship status and add useful notes.</p></div>
+        <div><span>03</span><h3>Maintain</h3><p>Update customer details whenever information changes.</p></div>
+        <div><span>04</span><h3>Review</h3><p>Use the reports section when you need an overall database view.</p></div>
+    </div>
+</section>
+
+<section class="dashboard-bottom-grid">
+    <div class="panel checklist-panel">
+        <p class="eyebrow">DATA QUALITY CHECKLIST</p>
+        <h2>Keep every customer record useful</h2>
+        <div class="check-item"><span>✓</span><div><b>Use complete contact information</b><small>Keep email and phone details accurate.</small></div></div>
+        <div class="check-item"><span>✓</span><div><b>Choose the correct status</b><small>Use Active, Lead or Inactive consistently.</small></div></div>
+        <div class="check-item"><span>✓</span><div><b>Update changed details</b><small>Maintain company, city, address and notes when needed.</small></div></div>
+        <div class="check-item"><span>✓</span><div><b>Review records regularly</b><small>Use Customers and Reports for ongoing maintenance.</small></div></div>
+    </div>
+    <div class="panel dashboard-note">
+        <p class="eyebrow">DASHBOARD PURPOSE</p>
+        <h2>This page is your starting point.</h2>
+        <p>The Dashboard is intentionally focused on navigation, workflow and system guidance. Customer lists belong to the Customers page, while database analysis belongs to Reports.</p>
+        <div class="mini-rule"></div>
+        <p class="small-note">Tip: Start with <strong>Customers</strong> to manage records, or use <strong>Add Customer</strong> when creating a new profile.</p>
+    </div>
+</section>
+{% endblock %}

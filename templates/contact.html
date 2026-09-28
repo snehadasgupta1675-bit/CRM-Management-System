@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Contact | CRM Connect{% endblock %}
+{% block content %}
+<div class="page-header"><div><p class="eyebrow">GET IN TOUCH</p><h1>Contact & Support</h1><p>Have a question about the CRM project? Use the form below to send a message.</p></div></div>
+<div class="contact-grid">
+<div class="panel contact-info"><div class="contact-item"><span>✉</span><div><strong>Email</strong><p>support@crmconnect.local</p></div></div><div class="contact-item"><span>⌂</span><div><strong>Workspace</strong><p>Customer Success & Management</p></div></div><div class="contact-item"><span>◷</span><div><strong>Response</strong><p>Usually within one business day</p></div></div><div class="contact-banner"><strong>Tip</strong><p>For customer data questions, first check the Customers page and use search or status filters.</p></div></div>
+<div class="panel form-panel"><form method="post">{% csrf_token %}<div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div><div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@example.com"></div><div class="field"><label>Subject</label><input name="subject" required placeholder="How can we help?"></div><div class="field"><label>Message</label><textarea name="message" rows="6" required placeholder="Write your message here..."></textarea></div><button class="btn primary" type="submit">Send Message →</button></form></div>
+</div>
+{% endblock %}

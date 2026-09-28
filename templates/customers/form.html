@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | CRM Connect{% endblock %}
+{% block content %}
+<div class="page-header"><div><p class="eyebrow">CUSTOMER MANAGEMENT</p><h1>{{ title }}</h1><p>Enter clear and accurate information so the customer record stays useful.</p></div></div>
+<div class="form-layout">
+  <div class="panel form-panel">
+    <form method="post">{% csrf_token %}
+      {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+      <div class="form-section"><h2>Basic information</h2><p>Primary details used to identify the customer.</p>
+        <div class="field-grid">
+          <div class="field full"><label for="{{ form.name.id_for_label }}">Full name *</label>{{ form.name }}{{ form.name.errors }}</div>
+          <div class="field"><label for="{{ form.email.id_for_label }}">Email address *</label>{{ form.email }}{{ form.email.errors }}</div>
+          <div class="field"><label for="{{ form.phone.id_for_label }}">Phone number *</label>{{ form.phone }}{{ form.phone.errors }}</div>
+          <div class="field"><label for="{{ form.company.id_for_label }}">Company</label>{{ form.company }}{{ form.company.errors }}</div>
+          <div class="field"><label for="{{ form.city.id_for_label }}">City</label>{{ form.city }}{{ form.city.errors }}</div>
+        </div>
+      </div>
+      <div class="form-section"><h2>Location and relationship</h2><p>Additional information for better customer organization.</p>
+        <div class="field"><label for="{{ form.address.id_for_label }}">Address</label>{{ form.address }}{{ form.address.errors }}</div>
+        <div class="field"><label for="{{ form.status.id_for_label }}">Customer status *</label>{{ form.status }}{{ form.status.errors }}</div>
+        <div class="field"><label for="{{ form.notes.id_for_label }}">Notes</label>{{ form.notes }}{{ form.notes.errors }}</div>
+      </div>
+      <div class="form-actions"><a class="btn outline" href="{% if customer %}{% url 'customer_detail' customer.pk %}{% else %}{% url 'customer_list' %}{% endif %}">Cancel</a><button class="btn primary" type="submit">{{ button }}</button></div>
+    </form>
+  </div>
+  <aside class="panel side-info"><div class="side-icon">✦</div><h2>Good CRM data matters</h2><p>Keep customer details complete and up to date. This makes searching, reporting and follow-up much easier.</p><ul><li>Use a real email address.</li><li>Keep phone numbers current.</li><li>Choose the correct status.</li><li>Add useful notes for future follow-up.</li></ul></aside>
+</div>
+{% endblock %}

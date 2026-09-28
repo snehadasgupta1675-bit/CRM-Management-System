@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Reports | CRM Connect{% endblock %}
+{% block content %}
+<section class="reports-hero-new">
+    <div>
+        <p class="eyebrow">DATABASE ANALYTICS</p>
+        <h1>Reports & Customer Insights</h1>
+        <p>This page is dedicated to analyzing the customer database. The figures below are generated from the records currently stored in SQLite.</p>
+    </div>
+    <div class="analysis-stamp"><span>LIVE</span><b>DATABASE<br>REPORT</b></div>
+</section>
+
+<section class="report-kpis">
+    <div class="report-kpi"><span>Total Records</span><strong>{{ total }}</strong><small>All customer profiles</small></div>
+    <div class="report-kpi active-kpi"><span>Active</span><strong>{{ active }}</strong><small>Ongoing relationships</small></div>
+    <div class="report-kpi lead-kpi"><span>Leads</span><strong>{{ leads }}</strong><small>Potential relationships</small></div>
+    <div class="report-kpi inactive-kpi"><span>Inactive</span><strong>{{ inactive }}</strong><small>Records to review</small></div>
+</section>
+
+<section class="analysis-main-grid">
+    <div class="panel status-analysis">
+        <div class="analysis-heading"><div><p class="eyebrow">STATUS BREAKDOWN</p><h2>Relationship distribution</h2></div><span class="analysis-label">3 STATUS TYPES</span></div>
+        <p class="muted">The bars show the proportion of each relationship status within the complete customer database.</p>
+        <div class="large-report-bars">
+            <div class="large-bar-row"><div class="bar-label"><span>Active customers</span><b>{{ active }}</b></div><div class="large-bar"><i style="width:{% if total %}{% widthratio active total 100 %}{% else %}0{% endif %}%"></i></div><small>{% if total %}{% widthratio active total 100 %}{% else %}0{% endif %}% of records</small></div>
+            <div class="large-bar-row"><div class="bar-label"><span>Potential leads</span><b>{{ leads }}</b></div><div class="large-bar"><i style="width:{% if total %}{% widthratio leads total 100 %}{% else %}0{% endif %}%"></i></div><small>{% if total %}{% widthratio leads total 100 %}{% else %}0{% endif %}% of records</small></div>
+            <div class="large-bar-row"><div class="bar-label"><span>Inactive records</span><b>{{ inactive }}</b></div><div class="large-bar"><i style="width:{% if total %}{% widthratio inactive total 100 %}{% else %}0{% endif %}%"></i></div><small>{% if total %}{% widthratio inactive total 100 %}{% else %}0{% endif %}% of records</small></div>
+        </div>
+    </div>
+    <div class="panel city-analysis">
+        <p class="eyebrow">LOCATION BREAKDOWN</p><h2>Customer concentration by city</h2>
+        <p class="muted">The cities below are ordered by the number of customer records stored for each location.</p>
+        {% if top_cities %}
+        <div class="city-report-list">
+            {% for city,count in top_cities %}<div class="city-report-row"><span class="city-rank">{{ forloop.counter }}</span><span class="city-name">{{ city }}</span><strong>{{ count }}</strong></div>{% endfor %}
+        </div>
+        {% else %}<div class="report-empty"><span>⌂</span><p>No city data is available yet.</p><small>Add city information to customer profiles to generate location insights.</small></div>{% endif %}
+    </div>
+</section>
+
+<section class="panel report-reading">
+    <div class="reading-heading"><p class="eyebrow">READING THE REPORT</p><h2>What these figures tell you</h2><p>Reports provide a database snapshot rather than individual customer details. Use the Customers page when you need to inspect or edit a specific record.</p></div>
+    <div class="reading-grid">
+        <article><span>01</span><h3>Relationship status</h3><p>Compare Active, Lead and Inactive records to understand the current structure of your customer database.</p></article>
+        <article><span>02</span><h3>Location pattern</h3><p>Review city counts to see where customer records are concentrated based on the information entered.</p></article>
+        <article><span>03</span><h3>Database maintenance</h3><p>Changes made through Customers or Django Admin are reflected here after the page is refreshed.</p></article>
+    </div>
+</section>
+
+<section class="report-footer-note">
+    <div class="report-footer-icon">↗</div>
+    <div><p class="eyebrow">DATA SOURCE</p><h3>Connected directly to the CRM database</h3><p>These reports use the Customer model stored in SQLite. No separate report data is maintained.</p></div>
+</section>
+{% endblock %}

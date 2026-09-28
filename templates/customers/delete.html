@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Delete Customer | CRM Connect{% endblock %}
+{% block content %}
+<div class="confirm-wrap"><div class="panel confirm-card"><div class="warning-icon">!</div><p class="eyebrow">DELETE RECORD</p><h1>Delete {{ customer.name }}?</h1><p>This will permanently remove the customer record from the CRM database. This action cannot be undone.</p><div class="confirm-summary"><strong>{{ customer.name }}</strong><span>{{ customer.email }} · {{ customer.status }}</span></div><form method="post">{% csrf_token %}<a class="btn outline" href="{% url 'customer_detail' customer.pk %}">Keep Customer</a><button class="btn danger" type="submit">Yes, Delete</button></form></div></div>
+{% endblock %}

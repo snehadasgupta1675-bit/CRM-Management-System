@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}About | CRM Connect{% endblock %}
+{% block content %}
+<section class="about-intro-new">
+    <div class="about-title-block"><p class="eyebrow">ABOUT THE PROJECT</p><h1>CRM Connect</h1><div class="title-line"></div><p>A Django-based Customer Relationship Management web application created to demonstrate structured customer data management, CRUD operations and a responsive web interface.</p></div>
+    <div class="about-definition"><span>CRM</span><h2>Customer Relationship Management</h2><p>A structured approach to storing, organizing and maintaining information about customer relationships.</p></div>
+</section>
+
+<section class="about-purpose-grid">
+    <div class="panel purpose-main"><p class="eyebrow">PROJECT PURPOSE</p><h2>Why this application was created</h2><p>The project brings common customer-management tasks into one web application instead of relying on separate lists or scattered records. It provides a practical example of how a Django application can connect a user interface to a relational database.</p><p>The system is designed around clarity: customer information is entered through forms, stored in SQLite, managed through CRUD operations and presented through dedicated pages.</p></div>
+    <div class="panel objective-card"><p class="eyebrow">CORE OBJECTIVES</p><div><span>01</span><b>Centralize</b><small>Keep customer information in one structured database.</small></div><div><span>02</span><b>Manage</b><small>Provide create, view, update and delete operations.</small></div><div><span>03</span><b>Understand</b><small>Present useful database information through reports.</small></div></div>
+</section>
+
+<section class="architecture-section panel">
+    <div class="section-title-row"><div><p class="eyebrow">APPLICATION STRUCTURE</p><h2>How the main parts work together</h2></div><p>The project separates the interface, business logic and data layer so each part has a clear responsibility.</p></div>
+    <div class="architecture-flow">
+        <div><span>01</span><h3>Browser Interface</h3><p>HTML templates and CSS create the pages users interact with.</p></div>
+        <b class="flow-arrow">→</b>
+        <div><span>02</span><h3>Django Views</h3><p>Views receive requests, process forms and prepare page data.</p></div>
+        <b class="flow-arrow">→</b>
+        <div><span>03</span><h3>Customer Model</h3><p>Django's ORM represents customer records as database objects.</p></div>
+        <b class="flow-arrow">→</b>
+        <div><span>04</span><h3>SQLite Database</h3><p>Customer information is stored persistently in the local database.</p></div>
+    </div>
+</section>
+
+<section class="about-crud">
+    <div class="crud-heading"><p class="eyebrow">CRUD FOUNDATION</p><h2>The four core data operations</h2><p>CRUD is the central functionality behind customer record management.</p></div>
+    <div class="crud-grid">
+        <div><strong>C</strong><h3>Create</h3><p>Add a new customer using the registration form.</p></div>
+        <div><strong>R</strong><h3>Read</h3><p>Browse customer records and open complete profiles.</p></div>
+        <div><strong>U</strong><h3>Update</h3><p>Edit customer information when details change.</p></div>
+        <div><strong>D</strong><h3>Delete</h3><p>Remove records that are no longer required.</p></div>
+    </div>
+</section>
+
+<section class="technology-section panel">
+    <div><p class="eyebrow">TECHNOLOGY STACK</p><h2>Tools used in the project</h2><p>The stack was selected to keep the application practical, beginner-friendly and easy to run locally.</p></div>
+    <div class="technology-list">
+        <div><b>Python</b><span>Programming language</span></div><div><b>Django</b><span>Backend web framework</span></div><div><b>SQLite</b><span>Relational database</span></div><div><b>HTML5</b><span>Page structure</span></div><div><b>CSS3</b><span>Responsive styling</span></div><div><b>JavaScript</b><span>Interface interactions</span></div><div><b>Bootstrap concepts</b><span>Responsive UI approach</span></div><div><b>Django Admin</b><span>Administrative record management</span></div>
+    </div>
+</section>
+
+<section class="about-future-new">
+    <div><p class="eyebrow">FUTURE SCOPE</p><h2>Possible extensions</h2><p>The current project provides the core CRM foundation. Future versions could add authentication and user roles, follow-up reminders, task management, sales pipelines, email integration, CSV/PDF exports, charts, notifications and cloud deployment.</p></div>
+    <div class="scope-badges"><span>User roles</span><span>Reminders</span><span>Sales pipeline</span><span>Exports</span><span>Notifications</span><span>Advanced analytics</span></div>
+</section>
+{% endblock %}

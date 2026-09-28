@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ customer.name }} | CRM Connect{% endblock %}
+{% block content %}
+<div class="page-header"><div><p class="eyebrow">CUSTOMER PROFILE</p><h1>{{ customer.name }}</h1><p>Complete customer record and relationship information.</p></div><div class="header-actions"><a class="btn outline" href="{% url 'customer_list' %}">← Customers</a><a class="btn primary" href="{% url 'customer_update' customer.pk %}">Edit Customer</a></div></div>
+<div class="profile-grid">
+  <div class="panel profile-card">
+    <div class="profile-top"><div class="avatar">{{ customer.name|first|upper }}</div><div><h2>{{ customer.name }}</h2><p>{{ customer.company|default:"Independent customer" }}</p><span class="badge {{ customer.status|lower }}">{{ customer.status }}</span></div></div>
+    <div class="detail-list">
+      <div><span>Email</span><strong>{{ customer.email }}</strong></div>
+      <div><span>Phone</span><strong>{{ customer.phone }}</strong></div>
+      <div><span>Company</span><strong>{{ customer.company|default:"Not provided" }}</strong></div>
+      <div><span>City</span><strong>{{ customer.city|default:"Not provided" }}</strong></div>
+      <div><span>Address</span><strong>{{ customer.address|default:"Not provided" }}</strong></div>
+      <div><span>Added</span><strong>{{ customer.created_at|date:"d F Y, h:i A" }}</strong></div>
+      <div><span>Last updated</span><strong>{{ customer.updated_at|date:"d F Y, h:i A" }}</strong></div>
+    </div>
+  </div>
+  <div class="panel notes-card"><p class="eyebrow">CUSTOMER NOTES</p><h2>Relationship notes</h2><div class="notes-box">{{ customer.notes|default:"No notes have been added for this customer yet."|linebreaks }}</div><div class="detail-actions"><a class="btn primary" href="{% url 'customer_update' customer.pk %}">Update Details</a><a class="btn danger" href="{% url 'customer_delete' customer.pk %}">Delete Record</a></div></div>
+</div>
+{% endblock %}

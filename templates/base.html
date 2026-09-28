@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CRM Connect{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="topbar">
+    <div class="nav-wrap">
+        <a class="brand" href="{% url 'dashboard' %}">
+            <span class="brand-icon">C</span>
+            <span>CRM<span class="brand-accent">Connect</span></span>
+        </a>
+        <nav class="nav-links">
+            <a href="{% url 'dashboard' %}" class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">Dashboard</a>
+            <a href="{% url 'customer_list' %}" class="{% if request.resolver_match.url_name == 'customer_list' or request.resolver_match.url_name == 'customer_detail' %}active{% endif %}">Customers</a>
+            <a href="{% url 'customer_create' %}" class="{% if request.resolver_match.url_name == 'customer_create' %}active{% endif %}">Add Customer</a>
+            <a href="{% url 'reports' %}" class="{% if request.resolver_match.url_name == 'reports' %}active{% endif %}">Reports</a>
+            <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+            <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+        </nav>
+        <a class="admin-link" href="/admin/">Admin Panel</a>
+    </div>
+</header>
+
+<main class="page-shell">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div>
+        <strong>CRM Connect</strong>
+        <span> • Customer Relationship Management System</span>
+    </div>
+    <div>Built with Python · Django · SQLite</div>
+</footer>
+<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Customers | CRM Connect{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><p class="eyebrow">CUSTOMER DIRECTORY</p><h1>Customers</h1><p>Search, filter and manage every customer record from one organized workspace.</p></div>
+  <a class="btn primary" href="{% url 'customer_create' %}">＋ Add Customer</a>
+</div>
+
+<div class="panel filter-panel">
+<form method="get" class="search-form">
+  <div class="search-box"><span>⌕</span><input type="text" name="q" value="{{ query }}" placeholder="Search name, email, phone, company or city..."></div>
+  <select name="status"><option value="">All statuses</option><option value="Active" {% if selected_status == "Active" %}selected{% endif %}>Active</option><option value="Lead" {% if selected_status == "Lead" %}selected{% endif %}>Lead</option><option value="Inactive" {% if selected_status == "Inactive" %}selected{% endif %}>Inactive</option></select>
+  <button class="btn dark" type="submit">Search</button>
+  <a class="btn outline" href="{% url 'customer_list' %}">Reset</a>
+</form>
+</div>
+
+<div class="panel">
+  <div class="panel-heading"><div><h2>Customer records</h2><p class="muted">{{ customers|length }} record{{ customers|length|pluralize }} found</p></div></div>
+  {% if customers %}
+  <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Contact</th><th>Company</th><th>Location</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+  {% for customer in customers %}
+  <tr>
+    <td><a class="customer-name" href="{% url 'customer_detail' customer.pk %}">{{ customer.name }}</a><small>Added {{ customer.created_at|date:"d M Y" }}</small></td>
+    <td>{{ customer.email }}<small>{{ customer.phone }}</small></td>
+    <td>{{ customer.company|default:"—" }}</td><td>{{ customer.city|default:"—" }}</td>
+    <td><span class="badge {{ customer.status|lower }}">{{ customer.status }}</span></td>
+    <td class="actions"><a href="{% url 'customer_detail' customer.pk %}" title="View">View</a><a href="{% url 'customer_update' customer.pk %}" title="Edit">Edit</a><a class="danger-link" href="{% url 'customer_delete' customer.pk %}" title="Delete">Delete</a></td>
+  </tr>
+  {% endfor %}
+  </tbody></table></div>
+  {% else %}
+  <div class="empty"><div class="empty-icon">⌕</div><h3>No matching customers</h3><p>Try changing your search or add a new customer record.</p><a class="btn primary" href="{% url 'customer_create' %}">Add Customer</a></div>
+  {% endif %}
+</div>
+{% endblock %}
